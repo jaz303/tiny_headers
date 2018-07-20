@@ -6,14 +6,19 @@ template<class T>
 class ring_buffer {
 
 public:
-    ring_buffer(int size) : items_(new T[size]), size_(size), mask_(size - 1), rp_(0), wp_(0), count_(0), owned_(true) {}
     ring_buffer(T *items, int size) : items_(items), size_(size), mask_(size - 1), rp_(0), wp_(0), count_(0), owned_(false) {}
+
+#ifndef JLIB_NO_MALLOC
+    ring_buffer(int size) : items_(new T[size]), size_(size), mask_(size - 1), rp_(0), wp_(0), count_(0), owned_(true) {}
     ring_buffer(T *items, int size, bool adopt) : items_(items), size_(size), mask_(size - 1), rp_(0), wp_(0), count_(0), owned_(adopt) {}
+#endif
 
     ~ring_buffer() {
+#ifndef JLIB_NO_MALLOC
         if (owned_) {
             delete[] items_;    
         }
+#endif
     }
 
     bool is_full() { return count_ == size_; }
