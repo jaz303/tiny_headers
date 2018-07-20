@@ -4,7 +4,7 @@ C/C++ single-file header libraries.
 
 ## Global `#define`s
 
-  - `JLIB_NO_MALLOC`: do not use memory allocation via e.g. `new`, `malloc()`. Some libraries (e.g. `ring_buffer.hpp`) will allocate their own storage if none is provided to the constructor. Defining `JLIB_NO_MALLOC` will make this behaviour unavailable.
+  - `JLIB_NO_MALLOC`: do not use memory allocation via `new`, `malloc()`, etc. Some libraries (e.g. `ring_buffer.hpp`) will allocate their own storage if none is provided to the constructor. Defining `JLIB_NO_MALLOC` will make this behaviour unavailable.
 
 ## ring_buffer.hpp
 
