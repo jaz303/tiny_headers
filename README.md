@@ -12,4 +12,4 @@ C/C++ single-file header libraries.
   - Not thread safe
   - Size must be a power of 2
   - If `remove()` is called on empty buffer the return value is undefined
-  - To ensure validity the contents of pointers obtained from `remove_ptr()` should be copied immediately
+  - To ensure validity, the contents of pointers obtained from `remove_ptr()` should be copied immediately
