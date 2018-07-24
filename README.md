@@ -1,4 +1,4 @@
-# header_libs
+# tiny_headers
 
 C/C++ single-file header libraries.
 
