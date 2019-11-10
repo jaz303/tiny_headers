@@ -35,14 +35,19 @@ public:
         return true;
     }
 
+    bool remove(T *ptr) {
+        if (is_empty()) {
+            return false;
+        }
+        *ptr = do_remove();
+        return true;
+    }
+
     T remove() {
         if (is_empty()) {
             return T();
         }
-        int rx = rp_;
-        rp_ = (rp_ + 1) & mask_;
-        count_--;
-        return items_[rx];
+        return do_remove();
     }
 
     T* remove_ptr() {
@@ -56,6 +61,13 @@ public:
     }
 
 private:
+    T do_remove() {
+        int rx = rp_;
+        rp_ = (rp_ + 1) & mask_;
+        count_--;
+        return items_[rx];
+    }
+
     T *items_;
     int size_, mask_;
     int rp_, wp_, count_;
